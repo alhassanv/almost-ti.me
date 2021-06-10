@@ -1,5 +1,5 @@
 require("dotenv").config()
-var mode = process.env.mode
+var mode = process.env.MODE
 
 import fs from "fs"
 import path from "path"
@@ -23,11 +23,11 @@ app.set('views', path.join(__dirname, '../src/views'))
 app.set('view engine', 'ejs');
 app.use('/', routes)
 
-if(mode == "live"){
+if(mode == "LIVE){
   const httpServer = http.createServer(app);
   const httpsServer = https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/my_api_url/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/my_api_url/fullchain.pem'),
+    key: fs.readFileSync('/etc/letsencrypt/live/${process.env.DOMAIN_NAME}/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/${process.env.DOMAIN_NAME}/fullchain.pem'),
   }, app);
   
   httpServer.listen(80, () => {
