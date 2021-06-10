@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, '../src/views'))
 app.set('view engine', 'ejs');
 app.use('/', routes)
 
-if(mode == "LIVE){
+if(mode == "LIVE"){
   const httpServer = http.createServer(app);
   const httpsServer = https.createServer({
     key: fs.readFileSync(`/etc/letsencrypt/live/${process.env.DOMAIN_NAME}/privkey.pem`),
