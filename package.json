@@ -2,10 +2,29 @@
   "name": "almost-ti.me",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "installDeps": "npm i --save",
+    "startUp": "node build/app.js",
+    "start": "npm run build && npm run installDeps && clear && npm run startUp"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.16.4",
+    "fs": "*",
+    "http": "*",
+    "https": "^1.0.0",
+    "mongoose": "^5.12.13",
+    "path": "^0.12.7",
+    "randomstring": "^1.2.1",
+    "ts-node": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/node": "^10.14.0",
+    "typescript": "^3.3.3"
+  }
 }
