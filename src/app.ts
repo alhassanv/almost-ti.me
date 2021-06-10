@@ -26,8 +26,8 @@ app.use('/', routes)
 if(mode == "LIVE){
   const httpServer = http.createServer(app);
   const httpsServer = https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/${process.env.DOMAIN_NAME}/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/${process.env.DOMAIN_NAME}/fullchain.pem'),
+    key: fs.readFileSync(`/etc/letsencrypt/live/${process.env.DOMAIN_NAME}/privkey.pem`),
+    cert: fs.readFileSync(`/etc/letsencrypt/live/${process.env.DOMAIN_NAME}/fullchain.pem`),
   }, app);
   
   httpServer.listen(80, () => {
