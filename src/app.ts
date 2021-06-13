@@ -7,6 +7,7 @@ import express from "express"
 import https from "https"
 import http from "http"
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 
 mongoose.connect(process.env.MONGO_DB, {
     'useFindAndModify': true,
@@ -18,10 +19,17 @@ const countdownClock = require('./schema/clockSchema')
 
 const app = express();
 const routes = require("./routes")
+const api = require("./api")
 
 app.set('views', path.join(__dirname, '../src/views'))
 app.set('view engine', 'ejs');
+
 app.use('/', routes)
+app.use('/api', api)
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
 
 if(mode == "LIVE"){
   const httpServer = http.createServer(app);
