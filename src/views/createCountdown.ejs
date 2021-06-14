@@ -30,7 +30,7 @@
     <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
       <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://cdn.discordapp.com/attachments/741334483348881499/852634768134635530/almost-ti.me_1.png">
       <div class="text-center lg:w-2/3 w-full">
-        <form action="/create/submit">
+        <form action="/clock/create">
           <h1 class="title-font sm:text-1xl text-xl mb-4 font-medium text-white">What is the day of your countdown?</h1>
           <select name="day">
              <option value="1" selected>1</option>
@@ -101,7 +101,7 @@
 
         <h1 class="title-font sm:text-1xl text-xl mb-4 font-medium text-white">What is the countdowns name?</h1>
         <input type="text" id="eventName" name="eventName" value="Event Name"><br><br>
-
+        <input type="checkbox" name="toRedirect" checked hidden>
         <input type="submit" value="Submit">
        </form>
       </div>

@@ -1,24 +1,16 @@
-import * as express from "express";
-import randomstring from "randomstring";
-var router = express.Router()
+import { Router } from 'express';
+import countdownClock from '../schema/clockSchema';
+const router = Router();
 
-const countdownClock = require('../schema/clockSchema')
+router.get('/', async (req, res) => {
+	const { code } = req.query;
+	if (!code) return res.redirect('/');
+	const clock = await countdownClock.findOne({ clockId: code });
+	const date = clock.date;
+	return res.render('countdown', {
+		eventName: clock.eventName,
+		date,
+	});
+});
 
-router.get("/", async (req, res) => {
-    if(!req.query.code) return res.redirect('/')
-
-    var info
-    
-    const data = await countdownClock.findOne({clockId: req.query.code}, (err, data)=> {
-        if(err) throw err
-        info = data
-    })
-
-    res.render('countdown', {
-        eventName: info.eventName,
-        formed: info.formedDate
-    })
-})
-
-
-module.exports = router;
+export default router;

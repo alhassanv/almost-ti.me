@@ -1,15 +1,12 @@
-import * as express from "express";
-var router = express.Router()
+import { Router } from 'express';
+const router = Router();
 
-const createClock = require("./create")
-router.use('/create', createClock)
+import clock from './clock';
+import countdown from './countdown';
 
-const countDown = require("./countdown")
-router.use('/countdown', countDown)
+router.get('/', (_req, res) => res.render('index'));
+router.get('/create', (_req, res) => res.render('createCountdown'));
+router.use('/clock', clock);
+router.use('/countdown', countdown);
 
-
-router.get('/', (req, res) => {
-    res.render('index')
-})
-
-module.exports = router;
+export default router;

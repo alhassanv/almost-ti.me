@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const schema = new mongoose.Schema({
-    clockId: String,
-    formedDate: String,
-    eventName: String
-})
+const ClockSchema = new mongoose.Schema({
+	clockId: { type: String, required: true },
+	date: { type: Date, required: true },
+	eventName: { type: String, required: true },
+});
 
-module.exports = mongoose.model('countdownClock', schema);
+export default mongoose.model('Clock', ClockSchema);
