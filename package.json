@@ -7,7 +7,8 @@
     "build": "tsc",
     "installDeps": "npm i --save",
     "startUp": "node build/app.js",
-    "start": "npm run build && npm run installDeps && clear && npm run startUp"
+    "start": "npm run installDeps && npm run build && npm run startUp",
+    "dev": "nodemon"
   },
   "author": "",
   "license": "ISC",
